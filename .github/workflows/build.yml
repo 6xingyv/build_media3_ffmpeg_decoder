@@ -82,6 +82,7 @@ jobs:
           cd "${FFMPEG_MODULE_PATH}/jni"
           ln -s "$FFMPEG_PATH" ffmpeg
           cd "${FFMPEG_MODULE_PATH}/jni"
+          sed -i '/--disable-vulkan/a\    --disable-iconv' build_ffmpeg.sh
           if [ ${{ github.event.inputs.FFMPEG_ENABLE_GPL }} = true ]; then
             sed -i '/--disable-vulkan/a\    --enable-gpl' build_ffmpeg.sh
           fi
